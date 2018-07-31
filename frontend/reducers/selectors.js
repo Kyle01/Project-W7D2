@@ -1,9 +1,7 @@
 import Redux from 'redux';
 
 
-const allTodos = (state) => {
+export const allTodos = ({ todos }) => {
   let arr = [];
-  Object.keys(state.todos).map(id => todos[id])
+  return Object.keys(todos).map(id => todos[id]);
 };
-
-export default allTodos;

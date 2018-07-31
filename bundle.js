@@ -141,13 +141,17 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/i
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _todo_list_container = __webpack_require__(/*! ./todos/todo_list_container */ "./frontend/components/todos/todo_list_container.jsx");
+
+var _todo_list_container2 = _interopRequireDefault(_todo_list_container);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return _react2.default.createElement(
-    'h1',
+    'div',
     null,
-    'App name is App '
+    _react2.default.createElement(_todo_list_container2.default, null)
   );
 };
 
@@ -194,6 +198,144 @@ exports.default = Root;
 
 /***/ }),
 
+/***/ "./frontend/components/todos/todo_form.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/todos/todo_form.jsx ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: JSX attributes must only be assigned a non-empty expression (23:23)\n\n\u001b[0m \u001b[90m 21 | \u001b[39m     \u001b[33m<\u001b[39m\u001b[33mform\u001b[39m \u001b[36mclass\u001b[39m\u001b[33m=\u001b[39m\u001b[32m\"\"\u001b[39m action\u001b[33m=\u001b[39m\u001b[32m\"index.html\"\u001b[39m method\u001b[33m=\u001b[39m\u001b[32m\"post\"\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 22 | \u001b[39m       \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[33mTitle\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 23 | \u001b[39m       \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m onChange\u001b[33m=\u001b[39m{} name\u001b[33m=\u001b[39m\u001b[32m\"\"\u001b[39m value\u001b[33m=\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mword}\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    | \u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 24 | \u001b[39m\n \u001b[90m 25 | \u001b[39m       \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[33mBody\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 26 | \u001b[39m       \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m onChange\u001b[33m=\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mupdateWord} name\u001b[33m=\u001b[39m\u001b[32m\"\"\u001b[39m value\u001b[33m=\u001b[39m{\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mword}\u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n");
+
+/***/ }),
+
+/***/ "./frontend/components/todos/todo_list.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/todos/todo_list.jsx ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _todo_form = __webpack_require__(/*! ./todo_form */ "./frontend/components/todos/todo_form.jsx");
+
+var _todo_form2 = _interopRequireDefault(_todo_form);
+
+var _util = __webpack_require__(/*! ../../util */ "./frontend/util.jsx");
+
+var _util2 = _interopRequireDefault(_util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TodoList = function (_React$Component) {
+  _inherits(TodoList, _React$Component);
+
+  function TodoList() {
+    _classCallCheck(this, TodoList);
+
+    return _possibleConstructorReturn(this, (TodoList.__proto__ || Object.getPrototypeOf(TodoList)).apply(this, arguments));
+  }
+
+  _createClass(TodoList, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_todo_form2.default, null),
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Current Todo list'
+        ),
+        _react2.default.createElement(
+          'ul',
+          null,
+          this.props.todos.map(function (el) {
+            return _react2.default.createElement(
+              'li',
+              null,
+              el.title
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return TodoList;
+}(_react2.default.Component);
+
+exports.default = TodoList;
+
+/***/ }),
+
+/***/ "./frontend/components/todos/todo_list_container.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/todos/todo_list_container.jsx ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _todo_list = __webpack_require__(/*! ./todo_list */ "./frontend/components/todos/todo_list.jsx");
+
+var _todo_list2 = _interopRequireDefault(_todo_list);
+
+var _todo_actions = __webpack_require__(/*! ../../actions/todo_actions */ "./frontend/actions/todo_actions.js");
+
+var _selectors = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    todos: (0, _selectors.allTodos)(state)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    receiveTodo: function receiveTodo(todo) {
+      return dispatch((0, _todo_actions.receiveTodo)(todo));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_todo_list2.default);
+
+/***/ }),
+
 /***/ "./frontend/reducers/root_reducer.js":
 /*!*******************************************!*\
   !*** ./frontend/reducers/root_reducer.js ***!
@@ -223,6 +365,38 @@ var rootReducer = (0, _redux.combineReducers)({
 });
 
 exports.default = rootReducer;
+
+/***/ }),
+
+/***/ "./frontend/reducers/selectors.js":
+/*!****************************************!*\
+  !*** ./frontend/reducers/selectors.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.allTodos = undefined;
+
+var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+var _redux2 = _interopRequireDefault(_redux);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var allTodos = exports.allTodos = function allTodos(_ref) {
+  var todos = _ref.todos;
+
+  var arr = [];
+  return Object.keys(todos).map(function (id) {
+    return todos[id];
+  });
+};
 
 /***/ }),
 
@@ -303,6 +477,10 @@ var _root_reducer = __webpack_require__(/*! ../reducers/root_reducer.js */ "./fr
 
 var _root_reducer2 = _interopRequireDefault(_root_reducer);
 
+var _selectors = __webpack_require__(/*! ../reducers/selectors */ "./frontend/reducers/selectors.js");
+
+var _selectors2 = _interopRequireDefault(_selectors);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var configureStore = function configureStore() {
@@ -341,6 +519,10 @@ var _root = __webpack_require__(/*! ./components/root.jsx */ "./frontend/compone
 
 var _root2 = _interopRequireDefault(_root);
 
+var _selectors = __webpack_require__(/*! ./reducers/selectors.js */ "./frontend/reducers/selectors.js");
+
+var _selectors2 = _interopRequireDefault(_selectors);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -351,7 +533,30 @@ document.addEventListener('DOMContentLoaded', function () {
   window.receiveTodos = _todo_actions.receiveTodos;
   window.store.getState();
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), document.getElementById('main'));
+  window.allTodos = _selectors2.default;
 });
+
+/***/ }),
+
+/***/ "./frontend/util.jsx":
+/*!***************************!*\
+  !*** ./frontend/util.jsx ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function uniqueId() {
+  return new Date().getTime();
+}
+
+exports.default = uniqueId;
 
 /***/ }),
 
